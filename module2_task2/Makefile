@@ -2,7 +2,7 @@ help: ## Show this
 	@sed -ne '/@sed/!s/## //p' Makefile
 
 build: ## Generate the website from the markdown language
-	@make lint >/dev/null 2>&1 && go build || exit -1
+	@make lint >/dev/null 2>&1 && go build || exit 1
 
 run: ## Runs the program
 	@./awesome-api >./awesome.log 2>&1 &
@@ -22,5 +22,4 @@ lint: ## Helps to make a lint on the files
 	@golangci-lint run
 
 unit-tests: ## Runs the unit test on the project
-	go get github.com/gorilla/mux
-	go test -v -short -coverprofile=coverage-units.out
+	@go test -v -short -coverprofile=coverage-units.out
