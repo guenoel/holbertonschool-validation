@@ -22,4 +22,5 @@ lint: ## Helps to make a lint on the files
 	@golangci-lint run
 
 unit-tests: ## Runs the unit test on the project
+	go get github.com/gorilla/mux
 	go test -v -short -coverprofile=coverage-units.out
