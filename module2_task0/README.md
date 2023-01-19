@@ -1,11 +1,22 @@
-# holbertonschool-validation
+# Exercices Devops
 
-Default readme.md
+## Prerequisites
 
-## Prerequisites - Project Life-cycle / Lifecycle
+Same tools as previous module
+Golang in v1.15.*
+NPM v7+ with NodeJS v14.* (stable)
+Python 3 with pip module
+
+## commands
+
+stop: kill pid
 help: Show this
-build: Generate the website from the markdown language
-run: Runs the program
-stop: Kills awesome-api's current process
-clean: Delete the binary done with build command
-test: Tests if the website is currently running properly
+init: init
+build: build project
+run: run project
+clean: clean files
+test: test
+
+## Lifecycle
+
+?

@@ -1,19 +1,28 @@
+prerequis: ## Prerequis
+	@rm -rf /usr/local/go && tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
+	@export PATH=$PATH:/usr/local/go/bin
+	@go get -u github.com/gorilla/mux
+	@curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.50.1
+
 help: ## Show this
 	@sed -ne '/@sed/!s/## //p' Makefile
 
-build: ## Generate the website from the markdown language
+init: ## init
+	@go mod init github.com/guenoel/awesome-api
+
+build: ## build project
 	@go build
 
-run: ## Runs the program
+run: ## run project
 	@./awesome-api >./awesome.log 2>&1 &
 
-stop: ## Kills awesome-api's current process
-	@kill $(shell pgrep awesome-api)
+stop: ## kill process pid
+	@kill "$(shell pgrep awesome-api)"
 
-clean: ## Delete the binary done with build command
+clean: ## clean unnecessary files
 	@make stop
-	@rm awesome-api awesome.log 
+	@rm -rf awesome-api
 
-test: ## Tests if the website is currently running properly
-	@curl http://localhost:9999 &
-	@curl http://localhost:9999/health 
+test: ## test
+	@curl http://localhost:9999
+	@curl http://localhost:9999/health
