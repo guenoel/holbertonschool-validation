@@ -15,7 +15,7 @@ clean: ## Delete the binary done with build command
 	@rm awesome-api awesome.log 
 
 test: ## Tests if the website is currently running properly
-	@go test 
+	@make unit-tests && make integration-tests
 
 lint: ## Helps to make a lint on the files
 	@golangci-lint run
